@@ -1,8 +1,12 @@
 {
-  "name": "taskman",
+  "name": "@haolin-ai/taskman",
   "version": "1.0.1",
   "description": "Agent-first todo CLI with provider adapters.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haolin29/taskman.git"
+  },
   "bin": {
     "taskman": "./bin/taskman.js"
   },
@@ -20,6 +24,9 @@
     "agent"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20.0.0"
   },
