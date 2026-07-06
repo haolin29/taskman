@@ -213,7 +213,7 @@ test('TickTick provider resolves short task IDs across projects before update', 
     '/project/project123456/data',
     '/task/task123456789',
   ]);
-  assert.deepEqual(calls[2].body, { id: 'task123456789', priority: 3 });
+  assert.deepEqual(calls[2].body, { id: 'task123456789', projectId: 'project123456', priority: 3 });
   assert.equal(result.task.priority, 'medium');
 });
 
@@ -282,6 +282,7 @@ test('TickTick provider sends empty update fields for clear operations', async (
   ]);
   assert.deepEqual(calls[1].body, {
     id: 'task123456789',
+    projectId: 'project123456',
     content: '',
     tags: [],
     reminders: [],
@@ -404,7 +405,7 @@ test('TickTick provider merges add-tags and remove-tags during update', async ()
     '/project/project123456/task/task123456789',
     '/task/task123456789',
   ]);
-  assert.deepEqual(calls[3].body, { id: 'task123456789', tags: ['keep', 'new'] });
+  assert.deepEqual(calls[3].body, { id: 'task123456789', projectId: 'project123456', tags: ['keep', 'new'] });
   assert.deepEqual(result.task.tags, ['keep', 'new']);
 });
 

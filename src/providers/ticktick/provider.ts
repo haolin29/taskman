@@ -137,7 +137,14 @@ export function createTickTickProvider(request: TickTickApiRequest): TodoProvide
         const resolvedTask = input.projectId
           ? await resolveTaskInProject(taskId, input.projectId, request)
           : await resolveTask(taskId, request);
-        const body = { id: resolvedTask.id, ...await buildTaskUpdateBody({ ...input, projectId: undefined }, resolvedTask, request) };
+        const body = {
+          id: resolvedTask.id,
+          ...await buildTaskUpdateBody(
+            { ...input, projectId: resolvedTask.projectId ?? undefined },
+            resolvedTask,
+            request
+          ),
+        };
         const task = await request('POST', `/task/${encodeURIComponent(resolvedTask.id)}`, body) as TickTickTask;
         const updatedTask = task ?? await fetchResolvedTask(resolvedTask, request);
         return mapTaskMutation(updatedTask);
