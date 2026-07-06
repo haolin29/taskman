@@ -1,6 +1,6 @@
 {
   "name": "@haolin-ai/taskman",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Agent-first todo CLI with provider adapters.",
   "type": "module",
   "repository": {
